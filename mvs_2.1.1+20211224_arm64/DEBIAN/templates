@@ -1,0 +1,5 @@
+Template: Hikrobot/mvs
+Type: boolean
+Default: true
+Description: Driver for Hikrobot series camera.
+

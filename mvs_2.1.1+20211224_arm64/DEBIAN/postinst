@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+echo "postinst $1 ..."
+
+UDEV_RULES_PATH=/etc/udev/rules.d
+UDEV_RULES_FILE=80-drivers-SDK-2bdf.rules
+
+
+case "$1" in
+    configure|upgrade)
+        cp -f /usr/local/share/mvs/$UDEV_RULES_FILE $UDEV_RULES_PATH/$UDEV_RULES_FILE
+        sh /usr/local/share/mvs/SetUSBStack.sh  || true
+        service udev reload &> /dev/null
+        service udev restart &> /dev/null
+        systemctl restart systemd-udevd.service &> /dev/null
+        ldconfig
+    ;;
+
+    *)
+        echo "unknown argument '$1'" >&2
+        exit 0
+    ;;
+esac
+
+exit 0
+

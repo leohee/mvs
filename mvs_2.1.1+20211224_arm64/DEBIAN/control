@@ -1,0 +1,11 @@
+Package: mvs
+Version: 2.1.1
+Section: devel
+Priority: extra
+Depends:
+Installed-Size: 15616
+Architecture: arm64
+Maintainer: mvs@hikrobot.com
+Providers: Hikrobot
+Description: Driver for Hikrobot series camera.
+
